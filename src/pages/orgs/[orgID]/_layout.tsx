@@ -1,6 +1,16 @@
 import { cn } from "@/lib/utils";
 import { useParams } from "@/router";
-import { Calendar, ChevronDown, Home, Frame, Users, Plus } from "lucide-react";
+import {
+  Calendar,
+  ChevronDown,
+  Home,
+  Frame,
+  Users,
+  Plus,
+  Mic,
+  Headphones,
+  Settings,
+} from "lucide-react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 const MANAGERCHANNELS = [
@@ -75,7 +85,7 @@ export default function Org() {
   };
   return (
     <div className="w-full flex">
-      <div className="bg-primary-foreground/30 w-1/6">
+      <div className="relative bg-primary-foreground/30 w-1/6 flex flex-col">
         <div className="h-14 border-b-2 border-black p-3 flex flex- items-center justify-between">
           <div className="flex items-center gap-2 text-xl">
             <Home className="w-4 h-4" />
@@ -124,7 +134,20 @@ export default function Org() {
             ))}
           </div>
         </div>
-        <div>User profile</div>
+        <div className="absolute bottom-0 p-3 flex justify-between">
+          <div>
+            <img
+              src="https://bom.so/Tkos14"
+              width={40}
+              className="rounded-full aspect-square object-cover"
+            />
+          </div>
+          <div className="flex gap-2 justify-between">
+            <Mic className="cursor-pointer" />
+            <Headphones className="cursor-pointer" />
+            <Settings className="cursor-pointer" />
+          </div>
+        </div>
       </div>
       <div className=" w-5/6">
         <Outlet />
