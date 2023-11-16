@@ -17,10 +17,10 @@ export default function Group() {
         </div>
       </header>
       <div className="flex  h-[calc(100vh-3.5rem)]">
-        <div className="w-3/4 bg-primary/20">
+        <div className="w-3/4 bg-primary/20 px-3 overflow-y-scroll">
           <ChatList />
         </div>
-        <div className="w-1/4 bg-primary/10 ">
+        <div className="w-1/4 bg-primary/10 p-5">
           <MemberList />
         </div>
       </div>

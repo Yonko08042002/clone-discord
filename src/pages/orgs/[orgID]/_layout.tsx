@@ -74,6 +74,20 @@ const CHANNELS = [
       },
     ],
   },
+  {
+    id: 4,
+    name: "Class 3",
+    groups: [
+      {
+        id: "7",
+        name: "Group a2",
+      },
+      {
+        id: "8",
+        name: "Group b2",
+      },
+    ],
+  },
 ];
 
 export default function Org() {
@@ -85,15 +99,15 @@ export default function Org() {
   };
   return (
     <div className="w-full flex">
-      <div className="relative bg-primary-foreground/30 w-1/6 flex flex-col">
-        <div className="h-14 border-b-2 border-black p-3 flex flex- items-center justify-between">
+      <div className="relative bg-primary-foreground/30 w-1/5 flex flex-col">
+        <div className="h-14 border-b-2 border-black p-3 flex items-center justify-between">
           <div className="flex items-center gap-2 text-xl">
             <Home className="w-4 h-4" />
             <h1 className="font-bold  ">Imgnai</h1>
           </div>
           <ChevronDown />
         </div>
-        <div className="h-3/4 overflow-scroll">
+        <div className="h-3/4 overflow-y-scroll p-0">
           <div className="text-l text-primary/40 m-2 ">
             {MANAGERCHANNELS.map((managerchannel) => (
               <div
@@ -134,15 +148,19 @@ export default function Org() {
             ))}
           </div>
         </div>
-        <div className="absolute bottom-0 p-3 flex justify-between">
-          <div>
+        <div className="absolute bottom-0 p-2 flex justify-between w-full">
+          <div className="flex gap-2  ">
             <img
               src="https://bom.so/Tkos14"
-              width={40}
+              width={44}
               className="rounded-full aspect-square object-cover"
             />
+            <div>
+              <p className="font-bold text-base">TinNguyen</p>
+              <p className="text-sm">tin08042002</p>
+            </div>
           </div>
-          <div className="flex gap-2 justify-between">
+          <div className="flex gap-2  items-center">
             <Mic className="cursor-pointer" />
             <Headphones className="cursor-pointer" />
             <Settings className="cursor-pointer" />
