@@ -9,9 +9,9 @@ import {
   Plus,
   Mic,
   Headphones,
-  Settings,
 } from "lucide-react";
 import { Outlet, useNavigate } from "react-router-dom";
+import SettingModel from "./_components/SettingModel";
 
 const MANAGERCHANNELS = [
   {
@@ -99,7 +99,7 @@ export default function Org() {
   };
   return (
     <div className="w-full flex">
-      <div className="relative bg-primary-foreground/30 w-1/5 flex flex-col">
+      <div className="relative bg-primary-foreground/20 w-1/5 flex flex-col">
         <div className="h-14 border-b-2 border-black p-3 flex items-center justify-between">
           <div className="flex items-center gap-2 text-xl">
             <Home className="w-4 h-4" />
@@ -163,7 +163,7 @@ export default function Org() {
           <div className="flex gap-2  items-center">
             <Mic className="cursor-pointer" />
             <Headphones className="cursor-pointer" />
-            <Settings className="cursor-pointer" />
+            <SettingModel />
           </div>
         </div>
       </div>

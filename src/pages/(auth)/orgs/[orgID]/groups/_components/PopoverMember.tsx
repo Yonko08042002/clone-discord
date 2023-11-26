@@ -20,11 +20,11 @@ export default function PopoverMember({ member }: Props) {
           className="flex items-center gap-4 hover:bg-primary/10 rounded-sm"
         >
           <Avatar src={member.avatar} alt={member.name} />
-          <p className="text-green-600 font-bold text-l">{member.name}</p>
+          <p className="text-green-600  text-l">{member.name}</p>
         </div>
       </PopoverTrigger>
       <PopoverContent side="left" className="w-96">
-        <InfoPopover />
+        <InfoPopover member={member} />
       </PopoverContent>
     </Popover>
   );

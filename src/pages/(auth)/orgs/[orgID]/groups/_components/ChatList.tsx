@@ -1,7 +1,8 @@
 import { Input } from "@/components/ui/input";
-import { Gift, PlusCircle, Smile, Sticker, Videotape } from "lucide-react";
+import { Gift, PlusCircle, Sticker, Videotape } from "lucide-react";
 import { useRef, useState } from "react";
 import { flushSync } from "react-dom";
+import EmojiPicker from "./EmojiPicker";
 
 const MESSAGES = [
   {
@@ -115,11 +116,11 @@ const MESSAGES = [
 ];
 export default function Chatlist() {
   const chatListRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const [content, setContent] = useState("");
   const [messages, setMessages] = useState(MESSAGES);
 
   const handleChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && inputRef.current?.value.trim() !== "") {
+    if (e.key === "Enter" && content.trim() !== "") {
       flushSync(() => {
         setMessages([
           ...messages,
@@ -130,12 +131,11 @@ export default function Chatlist() {
               avatar: "https://bom.so/Tkos14",
             },
             createdAt: "2022-01-01T00:00:00.000Z",
-            message: inputRef.current!.value,
+            message: content,
           },
         ]);
       });
-
-      inputRef.current!.value = "";
+      setContent("");
       chatListRef.current?.scrollTo({
         top: chatListRef.current.scrollHeight,
         behavior: "smooth",
@@ -158,10 +158,10 @@ export default function Chatlist() {
             />
             <div>
               <p>
-                <span className="text-blue-700 font-bold">
+                <span className="text-blue-500 font-bold">
                   {message.sender.name}
                 </span>
-                <span className="text-primary/40 text-sm">
+                <span className="ml-2 text-primary/40 text-sm">
                   {new Date(message.createdAt).toLocaleDateString()}
                 </span>
               </p>
@@ -173,15 +173,21 @@ export default function Chatlist() {
       <div className="absolute w-full ">
         <PlusCircle className="absolute w-6 h-6 top-3 left-6" />
         <Input
+          value={content}
           placeholder="Send message..."
           className="pl-14 pr-40"
+          onChange={(e) => setContent(e.target.value)}
           onKeyUp={handleChange}
         />
         <div className="absolute top-3 right-6 flex justify-between gap-3">
           <Gift className=" w-6 h-6 cursor-pointer" />
           <Sticker className=" w-6 h-6 cursor-pointer" />
           <Videotape className=" w-6 h-6 cursor-pointer" />
-          <Smile className=" w-6 h-6 cursor-pointer" />
+          <EmojiPicker
+            onEmojiClick={({ emoji }) => {
+              setContent((prev) => prev + emoji);
+            }}
+          />
         </div>
       </div>
     </div>
