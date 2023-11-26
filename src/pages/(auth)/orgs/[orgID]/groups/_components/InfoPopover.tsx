@@ -1,5 +1,5 @@
 import { Input } from "@/components/ui/input";
-import { User } from "@/types";
+import { User } from "@/lib/type";
 
 interface Props {
   member: User;
