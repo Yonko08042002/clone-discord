@@ -1,7 +1,11 @@
-export const getAuth = () => {
-  return localStorage.getItem("isAuth");
+export const getToken = () => {
+  return localStorage.getItem("token");
 };
 
-export const setAuth = () => {
-  return localStorage.setItem("isAuth", "true");
+export const setToken = (value: string) => {
+  localStorage.setItem("token", value);
+};
+
+export const removeToken = () => {
+  localStorage.removeItem("token");
 };

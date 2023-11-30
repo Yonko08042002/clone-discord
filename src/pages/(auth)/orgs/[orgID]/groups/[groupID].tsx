@@ -12,7 +12,7 @@ export default function Group() {
 
   return (
     <div className="">
-      <header className="h-14 p-2 bg-primary/20 border-b border-primary/20 text-2xl flex items-center justify-between ">
+      <header className="h-14 p-2 bg-primary-foreground/30 border-b border-primary-foreground/20 text-2xl flex items-center justify-between text-primary-foreground">
         <div className="flex items-center">
           <Frame className="w-4 h-4" />
           {groupID}
@@ -34,12 +34,12 @@ export default function Group() {
         <div
           className={`${
             isHideMemberList ? "w-full" : "w-3/4"
-          }  bg-primary/20 px-3 overflow-y-scroll`}
+          }  bg-primary-foreground/30 px-3 `}
         >
           <Chatlist />
         </div>
         {isHideMemberList ? null : (
-          <div className="w-1/4 bg-primary/10 p-5">
+          <div className="w-1/4 bg-primary-foreground/20 text-primary-foreground p-5">
             <MemberList />
           </div>
         )}

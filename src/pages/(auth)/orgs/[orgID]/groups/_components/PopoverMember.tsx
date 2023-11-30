@@ -18,7 +18,7 @@ export default function PopoverMember({ member }: Props) {
       <PopoverTrigger asChild>
         <div
           key={member.id}
-          className="flex items-center gap-4 hover:bg-primary/10 rounded-sm"
+          className="flex items-center gap-4 hover:bg-primary-foreground/10 rounded-sm"
         >
           <Avatar src={member.avatar} alt={member.name} />
           <p className="text-green-600  text-l">{member.name}</p>

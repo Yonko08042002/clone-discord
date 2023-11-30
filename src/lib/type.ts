@@ -8,3 +8,14 @@ export interface User {
   name: string;
   avatar: string;
 }
+
+export interface Message {
+  id: number;
+  sender: {
+    id: number;
+    name: string;
+    avatar: string;
+  };
+  createdAt: string;
+  message: string;
+}

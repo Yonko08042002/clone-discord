@@ -1,17 +1,24 @@
 import bgAuth from "@/assets/bg-auth.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { setToken } from "@/lib/storage";
+import { useNavigate } from "react-router-dom";
 
 export default function Component() {
+  const navigate = useNavigate();
+  const login = () => {
+    setToken("123");
+    navigate("/orgs");
+  };
   return (
-    <div className="relative h-screen ">
+    <div className="relative h-screen w-full">
       <img
         src={bgAuth}
         alt="#"
         className="w-full h-full object-cover items-center"
       />
 
-      <div className=" absolute top-1/2 left-1/2 w-3/5 h-2/3 -translate-y-1/2 -translate-x-1/2 bg-primary p-10 text-primary flex rounded-lg ">
+      <div className=" absolute top-1/2 left-1/2 w-3/5 h-2/3 -translate-y-1/2 -translate-x-1/2 bg-background p-10 text-primary flex rounded-lg ">
         <div className="w-2/3 pr-20 ">
           <h1 className="text-primary-foreground/80 text-3xl font-bold text-center ">
             Welcome back!
@@ -41,7 +48,10 @@ export default function Component() {
               Forgot Password?
             </p>
           </div>
-          <Button className="mt-3  w-full p-8 text-xl bg-indigo-600 hover:bg-indigo-600/60 ">
+          <Button
+            className="mt-3  w-full p-8 text-xl bg-indigo-600 hover:bg-indigo-600/60 "
+            onClick={login}
+          >
             Login
           </Button>
           <div className="flex space-x-1 mt-2">

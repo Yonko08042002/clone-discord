@@ -1,6 +1,8 @@
 import OrgSidebar from "@/components/OrgSidebar";
-import { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { getToken } from "@/lib/storage";
+import { redirect } from "@/router";
+
+import { Outlet } from "react-router-dom";
 
 const ORGS = [
   {
@@ -15,17 +17,17 @@ const ORGS = [
   },
 ];
 
-export default function App() {
-  const navigate = useNavigate();
+export function Loader() {
+  const isAuth = getToken();
+  if (!isAuth) {
+    return redirect("/login");
+  }
+  return null;
+}
 
-  useEffect(() => {
-    document.documentElement.classList.add("dark");
-    if (window.location.pathname == "/") {
-      navigate(`/orgs/${ORGS[0].id}`);
-    }
-  }, [navigate]);
+export default function App() {
   return (
-    <div className="flex space-y-0 h-screen">
+    <div className="flex space-y-0 h-screen bg-background w-full">
       <OrgSidebar orgs={ORGS} />
       <Outlet />
     </div>

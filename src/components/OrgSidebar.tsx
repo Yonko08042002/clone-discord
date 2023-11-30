@@ -12,14 +12,14 @@ export default function OrgSidebar({ orgs }: OrgSidebarProps) {
   const navigate = useNavigate();
   const { orgID } = useParams("/orgs/:orgID/groups/:groupID");
   return (
-    <div className="p-2 space-y-4">
+    <div className="p-2 space-y-4 w-20">
       <div className="items-center">
         <img
-          className="  cursor-pointer w-12 h-12  rounded-xl "
+          className=" ml-1 cursor-pointer w-12 h-12  rounded-xl "
           src="https://play-lh.googleusercontent.com/0oO5sAneb9lJP6l8c6DH4aj6f85qNpplQVHmPmbbBxAukDnlO7DarDW0b-kEIHa8SQ"
           alt="Tin nhắn trực tiếp"
         />
-        <div className=" mt-3  border-b-4 w-12 rounded-lg"></div>
+        <div className=" mt-3  border-b-4 w-14 rounded-lg "></div>
       </div>
       <div>
         {orgs.map((org) => (
@@ -27,7 +27,7 @@ export default function OrgSidebar({ orgs }: OrgSidebarProps) {
             <div
               key={org.id}
               className={cn({
-                "fixed left-0 border-l-4 border-primary mt-1 py-6 rounded-r-lg":
+                "fixed left-0 border-l-4 border-primary-foreground mt-1 py-6 rounded-r-lg":
                   org.id === orgID,
               })}
             ></div>
@@ -36,12 +36,12 @@ export default function OrgSidebar({ orgs }: OrgSidebarProps) {
               src={org.icon}
               key={org.id}
               alt={org.name}
-              className="w-14 h-14 rounded-sm p-1 mt-1"
+              className="w-14 h-14 rounded-sm p-1 mt-1 object-cover"
             />
           </div>
         ))}
       </div>
-      <div className=" cursor-pointer w-12 h-12 rounded-full bg-gray-600 text-green-500 items-center flex justify-center">
+      <div className=" ml-1 cursor-pointer w-12 h-12 rounded-full bg-gray-600 text-green-500 items-center flex justify-center">
         <Plus />
       </div>
     </div>
