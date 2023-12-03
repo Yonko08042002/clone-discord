@@ -1,14 +1,21 @@
 import bgAuth from "@/assets/bg-auth.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { setToken } from "@/lib/storage";
-import { Link, useNavigate } from "react-router-dom";
+import { getToken, setToken } from "@/lib/storage";
+import { Link, redirect, useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { LoginSchema } from "@/lib/shema";
 import { useState } from "react";
 import { signIn } from "@/apis/auth";
+
+export function Loader() {
+  const isAuth = getToken();
+  if (isAuth) {
+    return redirect("/orgs");
+  }
+}
 
 export default function Component() {
   const [isLoading, setIsLoading] = useState(false);
@@ -21,8 +28,8 @@ export default function Component() {
     mode: "onBlur",
     resolver: zodResolver(LoginSchema),
     defaultValues: {
-      email: "admin@enouvo.com",
-      password: "Enouvo@123",
+      email: "tin.nguyen@gmail.com",
+      password: "!Enouvo123",
     },
   });
 
@@ -34,7 +41,7 @@ export default function Component() {
       setIsLoading(true);
       const res = await signIn(email, password);
       setToken(res.data.accessToken);
-      navigate("/groups");
+      navigate("/orgs");
     } catch (error) {
       console.error(error);
     } finally {
