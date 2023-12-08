@@ -9,6 +9,7 @@ import * as z from "zod";
 import { LoginSchema } from "@/lib/shema";
 import { useState } from "react";
 import { signIn } from "@/apis/auth";
+import { ChevronLeft } from "lucide-react";
 
 // export function Loader() {
 //   const isAuth = getToken();
@@ -57,8 +58,12 @@ export default function Component() {
         className="w-full h-full object-cover items-center"
       />
 
-      <div className=" absolute top-1/2 left-1/2 w-3/5 h-2/3 -translate-y-1/2 -translate-x-1/2 bg-background p-10 text-primary flex rounded-lg ">
-        <div className="w-2/3 pr-20 ">
+      <div className=" absolute top-1/2 left-1/2 w-3/5 h-2/3 -translate-y-1/2 -translate-x-1/2 bg-gray-800 p-10 text-primary flex rounded-lg ">
+        <div className="w-full ">
+          <Link to="/" className="hover:underline inline-flex text-white">
+            <ChevronLeft />
+            Go Back
+          </Link>
           <h1 className="text-primary-foreground/80 text-3xl font-bold text-center ">
             Welcome back!
           </h1>
@@ -103,7 +108,7 @@ export default function Component() {
             >
               Login
             </Button>
-            <div className="flex space-x-1 mt-2">
+            <div className="flex space-x-1 mt-2 ">
               <p className="text-base text-primary-foreground/60">
                 Need a registered account?
               </p>
@@ -115,7 +120,7 @@ export default function Component() {
             </div>
           </form>
         </div>
-        <div className="w-1/3 ">
+        <div className="w-1/3 hidden">
           <img
             className=" w-56 h-56 rounded-sm ml-10 mt-8  "
             src="https://support.discord.com/hc/user_images/BE8K-8GQx85mQTcloqaqrw.png"

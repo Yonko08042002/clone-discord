@@ -30,7 +30,7 @@ export default function Group() {
           <HelpCircle className="cursor-pointer" />
         </div>
       </header>
-      <div className="flex  h-[calc(100vh-3.5rem)]">
+      <div className="flex  h-[calc(100vh-3.5rem)] ">
         <div
           className={`${
             isHideMemberList ? "w-full" : "w-3/4"
@@ -39,7 +39,7 @@ export default function Group() {
           <Chatlist />
         </div>
         {isHideMemberList ? null : (
-          <div className="w-1/4 bg-primary-foreground/20 text-primary-foreground p-5">
+          <div className="w-1/4 bg-primary-foreground/20 text-primary-foreground p-5  ">
             <MemberList />
           </div>
         )}
