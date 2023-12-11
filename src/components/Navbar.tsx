@@ -2,7 +2,7 @@ import { Button } from "./ui/button";
 import logo from "../assets/discord-logo-white.png";
 import { Link } from "react-router-dom";
 
-import NavbarRow from "./ui/NavbarRow";
+import NavbarRow from "./NavbarRow";
 export default function Navbar() {
   return (
     <nav className="flex items-center justify-between  h-20 w-full mx-7">

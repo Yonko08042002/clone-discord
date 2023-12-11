@@ -110,7 +110,10 @@ export default function Component() {
             <h1 className="text-3xl font-bold text-center z-1 mt-8">
               Ready to start your journey?
             </h1>
-            <Button className="flex h-16 gap-4 px-6 mt-10 text-xl rounded-full hover:shadow-xl mx-auto">
+            <Button
+              className="flex  gap-4 py-7 px-8 mt-10 text-xl bg-[#5865f2] rounded-full hover:shadow-xl 
+            hover:bg-[#5865f2]/60 mx-auto"
+            >
               <span>
                 <Download />
               </span>
