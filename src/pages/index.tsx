@@ -25,7 +25,7 @@ export default function Component() {
             </span>
             Download for Windows
           </Button>
-          <Button className="h-16 px-6 text-xl bg-black rounded-full hover:bg-black hover:shadow-xl">
+          <Button className="h-16 px-6 text-xl bg-gray-800 rounded-full hover:bg-black hover:shadow-xl">
             Open Discord in your browser
           </Button>
         </div>

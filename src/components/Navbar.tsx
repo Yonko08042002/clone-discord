@@ -1,17 +1,18 @@
 import { Button } from "./ui/button";
-import logo from "../assets/logo.png";
+import logo from "../assets/discord-logo-white.png";
 import { Link } from "react-router-dom";
+
+import NavbarRow from "./ui/NavbarRow";
 export default function Navbar() {
   return (
-    <header className="flex items-center justify-between  h-20 w-full mx-7">
-      <div className="flex items-center justify-between w-full gap-20 max-w-7xl mx-auto text-white">
-        <div>
-          {" "}
+    <nav className="flex items-center justify-between  h-20 w-full mx-7">
+      <div className="flex items-center justify-between w-full  max-w-7xl mx-auto text-white px-10">
+        <div className="w-[8rem] flex justify-start">
           <Link to="/">
-            <img className="object-cover" src={logo} alt="logo" />
+            <img className="" src={logo} alt="logo" />
           </Link>
         </div>
-        <div className="flex items-center gap-10 text-base font-medium">
+        <div className="hidden md:block md:flex items-center gap-10 text-base font-medium">
           <Link to="/download" className="hover:underline">
             Download
           </Link>
@@ -34,15 +35,17 @@ export default function Navbar() {
             Careers
           </Link>
         </div>
+
         <div className="w-[8rem] flex justify-end">
-          {" "}
           <Link to="/login">
             <Button className="text-black bg-white rounded-full hover:bg-white hover:shadow-xl">
               Login
             </Button>
           </Link>
+
+          <NavbarRow />
         </div>
       </div>
-    </header>
+    </nav>
   );
 }
