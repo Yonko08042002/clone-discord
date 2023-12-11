@@ -3,12 +3,15 @@ import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 export default function Navbar() {
   return (
-    <header className="flex items-center justify-between mt-2 h-20 w-full">
+    <header className="flex items-center justify-between  h-20 w-full mx-7">
       <div className="flex items-center justify-between w-full gap-20 max-w-7xl mx-auto text-white">
-        <Link to="/">
-          <img src={logo} alt="logo" />
-        </Link>
-        <div className="flex items-center gap-10 text-lg font-medium">
+        <div>
+          {" "}
+          <Link to="/">
+            <img className="object-cover" src={logo} alt="logo" />
+          </Link>
+        </div>
+        <div className="flex items-center gap-10 text-base font-medium">
           <Link to="/download" className="hover:underline">
             Download
           </Link>
@@ -31,11 +34,14 @@ export default function Navbar() {
             Careers
           </Link>
         </div>
-        <Link to="/login">
-          <Button className="text-black bg-white rounded-full hover:bg-white hover:shadow-xl">
-            Login
-          </Button>
-        </Link>
+        <div className="w-[8rem] flex justify-end">
+          {" "}
+          <Link to="/login">
+            <Button className="text-black bg-white rounded-full hover:bg-white hover:shadow-xl">
+              Login
+            </Button>
+          </Link>
+        </div>
       </div>
     </header>
   );

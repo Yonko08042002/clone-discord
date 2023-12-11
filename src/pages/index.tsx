@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import SectionInView from "@/components/SectionInView";
 
@@ -6,7 +7,7 @@ import { Download } from "lucide-react";
 export default function Component() {
   return (
     <div className="bg-white w-full h-screen">
-      <div className="flex flex-col mx-auto items-center w-full bg-no-repeat bg-cover text-white h-[38rem] bg-discover-bgr">
+      <div className="flex flex-col mx-auto items-center  bg-no-repeat bg-cover text-white h-[38rem] bg-discover-bgr">
         <Navbar />
         <div className="flex flex-col items-center justify-center max-w-[800px] mt-20">
           <h1 className="text-6xl font-bold font-"> IMAGINE A PLACE...</h1>
@@ -29,14 +30,14 @@ export default function Component() {
           </Button>
         </div>
       </div>
-      <div className=" w-full h-[34rem] text-black bg-white item">
+      <div className=" w-full h-[34rem] text-black bg-white item pt-8">
         <SectionInView className="flex  max-w-5xl gap-10 mx-auto justify-center">
           <img
             src="/src/assets/bg-group-1.png"
-            alt="bg-group"
+            alt="bg-group-1"
             className="object-cover"
           />
-          <div className="flex flex-col max-w-[300px]">
+          <div className=" max-w-[300px]">
             <p className="text-4xl font-bold">
               Create an invite-only place where you belong
             </p>
@@ -50,9 +51,9 @@ export default function Component() {
       </div>
       <div className="text-black bg-gray-100 w-full h-[34rem]">
         <SectionInView className="flex justify-center max-w-5xl gap-10 pt-20 mx-auto">
-          <div className="flex flex-col max-w-[300px]">
+          <div className="max-w-[300px]">
             <p className="text-4xl font-bold">Where hanging out is easy</p>
-            <p className="mt-4 leading-8">
+            <p className="leading-8">
               Grab a seat in a voice channel when you’re free. Friends in your
               server can see you’re around and instantly pop in to talk without
               having to call.
@@ -60,7 +61,7 @@ export default function Component() {
           </div>
           <img
             src="/src/assets/bg-group-2.png"
-            alt="bg-group-right"
+            alt="bg-group-2"
             className="object-cover"
           />
         </SectionInView>
@@ -69,10 +70,10 @@ export default function Component() {
         <SectionInView className="flex justify-center max-w-5xl gap-10 pt-20 mx-auto">
           <img
             src="/src/assets/bg-group-3.png"
-            alt="bg-group-left"
+            alt="bg-group-3"
             className="object-cover"
           />
-          <div className="flex flex-col max-w-[300px]">
+          <div className=" max-w-[300px]">
             <p className="text-4xl font-bold">From few to a fandom</p>
             <p className="mt-4 leading-8">
               Get any community running with moderation tools and custom member
@@ -82,13 +83,13 @@ export default function Component() {
           </div>
         </SectionInView>
       </div>
-      <div className=" bg-gray-100 w-full h-[74rem] text-black">
-        <SectionInView className="flex flex-col items-center max-w-5xl pt-20 mx-auto">
-          <div className="flex text-center flex-col max-w-[1000px]">
-            <h1 className="text-6xl font-bold">
+      <div className=" bg-gray-100 w-full py-20 text-black">
+        <SectionInView className=" items-center max-w-4xl mx-auto">
+          <div className=" text-center h-max ">
+            <h1 className="text-6xl font-bold ">
               Reliable tech for staying close
             </h1>
-            <p className="mt-4 leading-8">
+            <p className="mt-4 leading-8  ">
               Low-latency voice and video feels like you’re in the same room.
               Wave hello over video, watch friends stream their games, or gather
               up and have a drawing session with screen share.
@@ -97,18 +98,28 @@ export default function Component() {
           <img
             src="/src/assets/bg-group-4.svg"
             alt="bg-call"
-            className="object-cover"
+            className="object-cover  mx-auto"
           />
-          <img src="/src/assets/bg-start.svg" className="object-cover mt-10" />
-          <h1 className="text-3xl font-bold">Ready to start your journey?</h1>
-          <Button className="flex h-16 gap-4 px-6 mt-10 text-xl rounded-full hover:shadow-xl">
-            <span>
-              <Download />
-            </span>
-            Download for Windows
-          </Button>
+          <div className="relative w-full h-max py-2 mt-12">
+            <div className="absolute overflow-hidden w-full">
+              <img
+                src="/src/assets/bg-start.svg"
+                className="object-cover mx-auto"
+              />
+            </div>
+            <h1 className="text-3xl font-bold text-center z-1 mt-8">
+              Ready to start your journey?
+            </h1>
+            <Button className="flex h-16 gap-4 px-6 mt-10 text-xl rounded-full hover:shadow-xl mx-auto">
+              <span>
+                <Download />
+              </span>
+              Download for Windows
+            </Button>
+          </div>
         </SectionInView>
       </div>
+      <Footer />
     </div>
   );
 }
