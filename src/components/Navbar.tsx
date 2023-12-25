@@ -42,7 +42,6 @@ export default function Navbar() {
               Login
             </Button>
           </Link>
-
           <NavbarRow />
         </div>
       </div>

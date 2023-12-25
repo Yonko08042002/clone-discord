@@ -1,22 +1,23 @@
 import bgAuth from "@/assets/bg-auth.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { setToken } from "@/lib/storage";
-import { Link, useNavigate } from "react-router-dom";
+import { getToken, setToken } from "@/lib/storage";
+import { Link, redirect, useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { LoginSchema } from "@/lib/shema";
+import { LoginSchema } from "@/lib/schema";
 import { useState } from "react";
 import { signIn } from "@/apis/auth";
 import { ChevronLeft } from "lucide-react";
 
-// export function Loader() {
-//   const isAuth = getToken();
-//   if (isAuth) {
-//     return redirect("/orgs");
-//   }
-// }
+export function Loader() {
+  const isAuth = getToken();
+  if (isAuth) {
+    return redirect("/orgs");
+  }
+  return null;
+}
 
 export default function Component() {
   const [isLoading, setIsLoading] = useState(false);
@@ -41,7 +42,8 @@ export default function Component() {
     try {
       setIsLoading(true);
       const res = await signIn(email, password);
-      setToken(res.data.accessToken);
+      setToken(res.data.token);
+      console.log(res.data.token);
       navigate("/orgs");
     } catch (error) {
       console.error(error);

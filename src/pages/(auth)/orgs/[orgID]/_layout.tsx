@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
-import { useParams } from "@/router";
+import { Link, useParams } from "@/router";
 import {
-  Calendar,
   ChevronDown,
   Home,
   Frame,
@@ -20,24 +19,26 @@ import {
 import { Outlet, useNavigate } from "react-router-dom";
 import SettingModel from "./_components/SettingModel";
 import { Button } from "@/components/ui/button";
+import EventModel from "./groups/[groupID]/_components/EventModel";
 
-const MANAGERCHANNELS = [
-  {
-    id: 1,
-    name: "Event",
-    icon: Calendar,
-  },
-  {
-    id: 2,
-    name: "Browse Channel",
-    icon: Frame,
-  },
-  {
-    id: 3,
-    name: "Members",
-    icon: Users,
-  },
-];
+// const MANAGERCHANNELS = [
+//   {
+//     id: 1,
+//     name: "Event",
+//     icon: Calendar,
+//   },
+//   {
+//     id: 2,
+//     name: "Browse Channel",
+//     icon: Frame,
+//   },
+//   {
+//     id: 3,
+//     name: "Members",
+//     icon: Users,
+//     to: "/member-safety",
+//   },
+// ];
 
 const CHANNELS = [
   {
@@ -111,21 +112,25 @@ export default function Org() {
         <div className="h-14 border-b-2 border-primary-foreground/60 p-3 flex items-center justify-between">
           <div className="flex items-center gap-2 text-xl">
             <Home className="w-4 h-4" />
-            <h1 className="font-bold  ">Imgnai</h1>
+            <h1 className="font-bold  text-base">Imgnai</h1>
           </div>
           <ChevronDown />
         </div>
         <div className="h-3/4 overflow-y-scroll p-0">
-          <div className="text-l text-primary-foreground/40 m-2 ">
-            {MANAGERCHANNELS.map((managerchannel) => (
-              <div
-                className="p-2 flex gap-1 items-center cursor-pointer hover:bg-primary-foreground/20 rounded-sm"
-                key={managerchannel.id}
-              >
-                <managerchannel.icon className="w-4 h-4" />
-                <p>{managerchannel.name}</p>
-              </div>
-            ))}
+          <div className="text-l text-primary-foreground/40 m-2 w-full">
+            <EventModel />
+            <button className="w-full p-2 flex gap-1 items-center hover:bg-primary-foreground/20 rounded-sm">
+              <Frame className="w-4 h-4" />
+              <p>Browse Channel</p>
+            </button>
+            <Link
+              to="/orgs/:orgID/groups/:groupID/member_safety"
+              params={{ orgID, groupID }}
+              className="w-full p-2 flex gap-1 items-center hover:bg-primary-foreground/20 rounded-sm"
+            >
+              <Users className="w-4 h-4" />
+              <p>Members</p>
+            </Link>
           </div>
           <div className=" px-2 my-4 text-primary-foreground/60">
             <hr className=" h-2 border-primary-foreground/60"></hr>
@@ -134,7 +139,7 @@ export default function Org() {
                 <div className="flex justify-between items-center pr-2">
                   <div className="flex items-center">
                     <ChevronDown className="w-4 h-4 " />
-                    <h1 className="uppercase">{channel.name}</h1>
+                    <h1 className="uppercase text-base">{channel.name}</h1>
                   </div>
                   <Plus className="w-4 h-4" />
                 </div>

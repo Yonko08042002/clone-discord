@@ -1,6 +1,10 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import SectionInView from "@/components/SectionInView";
+import bg_one from "/src/assets/bg-group-1.png";
+import bg_two from "/src/assets/bg-group-2.png";
+import bg_three from "/src/assets/bg-group-3.png";
+import bg_four from "/src/assets/bg-group-3.svg";
 
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
@@ -33,7 +37,7 @@ export default function Component() {
       <div className=" w-full h-[34rem] text-black bg-white item pt-8">
         <SectionInView className="flex  max-w-5xl gap-10 mx-auto justify-center">
           <img
-            src="/src/assets/bg-group-1.png"
+            src={bg_one}
             alt="bg-group-1"
             className="object-cover"
           />
@@ -60,7 +64,7 @@ export default function Component() {
             </p>
           </div>
           <img
-            src="/src/assets/bg-group-2.png"
+            src={bg_two}
             alt="bg-group-2"
             className="object-cover"
           />
@@ -69,7 +73,7 @@ export default function Component() {
       <div className="text-black w-full h-[34rem] bg-white">
         <SectionInView className="flex justify-center max-w-5xl gap-10 pt-20 mx-auto">
           <img
-            src="/src/assets/bg-group-3.png"
+            src={bg_three}
             alt="bg-group-3"
             className="object-cover"
           />
@@ -96,7 +100,7 @@ export default function Component() {
             </p>
           </div>
           <img
-            src="/src/assets/bg-group-4.svg"
+            src={bg_four}
             alt="bg-call"
             className="object-cover  mx-auto"
           />

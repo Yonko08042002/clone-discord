@@ -3,8 +3,8 @@ import TooltipIcon from "@/components/TooltipIcon";
 import { useParams } from "@/router";
 import { Frame, HelpCircle, Users } from "lucide-react";
 import { useState } from "react";
-import Chatlist from "./_components/ChatList";
-import MemberList from "./_components/MemberList";
+import Chatlist from "../_components/ChatList";
+import MemberList from "../_components/MemberList";
 
 export default function Group() {
   const [isHideMemberList, setIsHideMemberList] = useState(false);

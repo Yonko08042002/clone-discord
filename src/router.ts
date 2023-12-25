@@ -7,10 +7,12 @@ export type Path =
   | `/`
   | `/login`
   | `/orgs/:orgID/groups/:groupID`
+  | `/orgs/:orgID/groups/:groupID/member_safety`
   | `/register`
 
 export type Params = {
   '/orgs/:orgID/groups/:groupID': { orgID: string; groupID: string }
+  '/orgs/:orgID/groups/:groupID/member_safety': { orgID: string; groupID: string }
 }
 
 export type ModalPath = never
