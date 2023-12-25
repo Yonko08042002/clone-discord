@@ -3,19 +3,19 @@ import TooltipIcon from "@/components/TooltipIcon";
 import { useParams } from "@/router";
 import { Frame, HelpCircle, Users } from "lucide-react";
 import { useState } from "react";
-import Chatlist from "../_components/ChatList";
-import MemberList from "../_components/MemberList";
+import Chatlist from "./_components/ChatList";
+import MemberList from "./_components/MemberList";
 
-export default function Group() {
+export default function Channel() {
   const [isHideMemberList, setIsHideMemberList] = useState(false);
-  const { groupID } = useParams("/orgs/:orgID/groups/:groupID");
+  const { channelID } = useParams("/channels/:channelID");
 
   return (
     <div className="">
       <header className="h-14 p-2 bg-primary-foreground/30 border-b border-primary-foreground/20 text-2xl flex items-center justify-between text-primary-foreground">
         <div className="flex items-center">
           <Frame className="w-4 h-4" />
-          {groupID}
+          {channelID}
         </div>
         <div className="flex gap-x-2 mx-3">
           <TooltipIcon

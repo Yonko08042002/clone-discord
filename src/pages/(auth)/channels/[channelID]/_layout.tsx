@@ -19,7 +19,7 @@ import {
 import { Outlet, useNavigate } from "react-router-dom";
 import SettingModel from "./_components/SettingModel";
 import { Button } from "@/components/ui/button";
-import EventModel from "./groups/[groupID]/_components/EventModel";
+import EventModel from "./_components/EventModel";
 
 // const MANAGERCHANNELS = [
 //   {
@@ -100,11 +100,12 @@ const CHANNELS = [
 ];
 
 export default function Org() {
-  const { groupID, orgID } = useParams("/orgs/:orgID/groups/:groupID");
+  const { channelID } = useParams("/channels/:channelID");
   const navigate = useNavigate();
 
   const navigateToGroup = (id: string) => {
-    navigate(`/orgs/${orgID}/groups/${id}`);
+    
+    navigate(`/orgs/${channelID}/${id}`);
   };
   return (
     <div className="w-full flex">
@@ -124,8 +125,8 @@ export default function Org() {
               <p>Browse Channel</p>
             </button>
             <Link
-              to="/orgs/:orgID/groups/:groupID/member_safety"
-              params={{ orgID, groupID }}
+              to="/channels/:channelID/member_safety"
+              params={{ channelID }}
               className="w-full p-2 flex gap-1 items-center hover:bg-primary-foreground/20 rounded-sm"
             >
               <Users className="w-4 h-4" />
@@ -148,7 +149,7 @@ export default function Org() {
                     <div
                       className={cn("px-2 py-2", {
                         "bg-primary-foreground/20 text-primary-foreground/80 cursor-pointe rounded-sm ":
-                          group.id === groupID,
+                          group.id === channelID,
                       })}
                       key={group.id}
                       onClick={() => navigateToGroup(group.id)}
