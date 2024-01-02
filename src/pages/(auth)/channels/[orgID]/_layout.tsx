@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Link, useParams } from "@/router";
+import { groupBy } from "lodash-es";
 import {
   ChevronDown,
   Home,
@@ -20,93 +21,20 @@ import { Outlet, useNavigate } from "react-router-dom";
 import SettingModel from "./_components/SettingModel";
 import { Button } from "@/components/ui/button";
 import EventModel from "./_components/EventModel";
+import { useQuery } from "react-query";
+import { getChannels } from "@/apis/channels";
+// import { group } from "console";
 
-// const MANAGERCHANNELS = [
-//   {
-//     id: 1,
-//     name: "Event",
-//     icon: Calendar,
-//   },
-//   {
-//     id: 2,
-//     name: "Browse Channel",
-//     icon: Frame,
-//   },
-//   {
-//     id: 3,
-//     name: "Members",
-//     icon: Users,
-//     to: "/member-safety",
-//   },
-// ];
-
-const CHANNELS = [
-  {
-    id: 1,
-    name: "Class",
-    groups: [
-      {
-        id: "1",
-        name: "Group A",
-      },
-      {
-        id: "2",
-        name: "Group B",
-      },
-    ],
-  },
-  {
-    id: 2,
-    name: "Class 2",
-    groups: [
-      {
-        id: "3",
-        name: "Group A2",
-      },
-      {
-        id: "4",
-        name: "Group B2",
-      },
-    ],
-  },
-  {
-    id: 3,
-    name: "Class 2",
-    groups: [
-      {
-        id: "5",
-        name: "Group a2",
-      },
-      {
-        id: "6",
-        name: "Group b2",
-      },
-    ],
-  },
-  {
-    id: 4,
-    name: "Class 3",
-    groups: [
-      {
-        id: "7",
-        name: "Group a2",
-      },
-      {
-        id: "8",
-        name: "Group b2",
-      },
-    ],
-  },
-];
-
-export default function Org() {
+export default function Component() {
   const { channelID } = useParams("/channels/:channelID");
   const navigate = useNavigate();
 
   const navigateToGroup = (id: string) => {
-    
-    navigate(`/orgs/${channelID}/${id}`);
+    navigate(`/channels/${channelID}/${id}`);
   };
+
+  const { data } = useQuery(["channels"], () => getChannels(channelID));
+
   return (
     <div className="w-full flex">
       <div className="relative bg-primary-foreground/20 text-primary-foreground w-1/5 min-w-[18rem] max-w-[16rem] flex flex-col">
@@ -135,31 +63,33 @@ export default function Org() {
           </div>
           <div className=" px-2 my-4 text-primary-foreground/60">
             <hr className=" h-2 border-primary-foreground/60"></hr>
-            {CHANNELS.map((channel) => (
-              <div key={channel.id} className="text-l">
-                <div className="flex justify-between items-center pr-2">
-                  <div className="flex items-center">
-                    <ChevronDown className="w-4 h-4 " />
-                    <h1 className="uppercase text-base">{channel.name}</h1>
-                  </div>
-                  <Plus className="w-4 h-4" />
-                </div>
-                <div className="p-2 space-y-2">
-                  {channel.groups.map((group) => (
-                    <div
-                      className={cn("px-2 py-2", {
-                        "bg-primary-foreground/20 text-primary-foreground/80 cursor-pointe rounded-sm ":
-                          group.id === channelID,
-                      })}
-                      key={group.id}
-                      onClick={() => navigateToGroup(group.id)}
-                    >
-                      {group.name}
+            {Object.entries(groupBy(channels, "category.name"))?.map(
+              ([category, channels]) => (
+                <div key={category} className="text-l">
+                  <div className="flex justify-between items-center pr-2">
+                    <div className="flex items-center">
+                      <ChevronDown className="w-4 h-4 " />
+                      <h1 className="uppercase text-base">{category}</h1>
                     </div>
-                  ))}
+                    <Plus className="w-4 h-4" />
+                  </div>
+                  <div className="p-2 space-y-2">
+                    {channels.map((channel) => (
+                      <div
+                        className={cn("px-2 py-2", {
+                          "bg-primary-foreground/20 text-primary-foreground/80 cursor-pointe rounded-sm ":
+                            channel.id === channelID,
+                        })}
+                        key={channel.id}
+                        onClick={() => navigateToGroup(channel.id)}
+                      >
+                        {channel.name}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            )}
           </div>
         </div>
         <div className="absolute bottom-0 py-1 px-4 flex flex-col w-full bg-primary-foreground/10">

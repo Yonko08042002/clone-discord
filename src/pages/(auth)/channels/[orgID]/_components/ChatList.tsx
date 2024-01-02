@@ -3,23 +3,21 @@ import { Gift, PlusCircle, Sticker, Videotape } from "lucide-react";
 import { useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import EmojiPicker from "./EmojiPicker";
-import Message from "./MessageItem";
-const MESSAGES = [
-  {
-    id: 1,
-    sender: {
-      id: 1,
-      name: "TinNguyen",
-      avatar: "https://bom.so/Tkos14",
-    },
-    createdAt: "09/11/2023 19:44",
-    message: "Hey,How are you?",
-  },
-];
+import MessageItem from "./MessageItem";
+import { useQuery } from "react-query";
+
+import { Message } from "@/lib/type";
+import { getMessages } from "@/apis/messages";
+import { useParams } from "@/router";
+
 export default function Chatlist() {
+  // const { channelID, orgID } = useParams("/channels/:orgID/:channelID");
+    const { channelID, orgID } = useParams("/channels/:orgID/:channelID");
   const chatListRef = useRef<HTMLDivElement>(null);
   const [content, setContent] = useState("");
-  const [messages, setMessages] = useState(MESSAGES);
+  const [messages, setMessages] = useState<Message[]>([]);
+  
+  const { data } = useQuery(["messages"], () => getMessages(orgID,channelID));
 
   const handleChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && content.trim() !== "") {
@@ -52,8 +50,8 @@ export default function Chatlist() {
         className="flex flex-col h-[calc(100vh-8rem)] overflow-y-auto"
         ref={chatListRef}
       >
-        {messages.map((message) => (
-          <Message key={message.id} message={message} />
+        {[...(data?.data ?? []), ...messages]?.map((message) => (
+          <MessageItem key={message.id} message={message} />
         ))}
       </div>
       <div className="absolute w-full text-primary-foreground">

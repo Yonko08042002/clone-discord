@@ -19,3 +19,10 @@ export interface Message {
   createdAt: string;
   message: string;
 }
+
+export interface Message {
+  id: number;
+  sender: User;
+  createdAt: string;
+  message: string;
+}

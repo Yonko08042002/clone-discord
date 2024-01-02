@@ -16,11 +16,11 @@ export function Loader() {
 }
 
 export default function App() {
-  const {data}= useQuery("orgs",()=>getOrgs())
+  const {data}= useQuery(["orgs"],()=>getOrgs())
 
   return (
     <div className="flex space-y-0 h-screen bg-background w-full">
-      <OrgSidebar orgs={data.data} />
+      <OrgSidebar orgs={data?.data??[]} />
       <Outlet />
     </div>
   );
