@@ -10,6 +10,7 @@ import { LoginSchema } from "@/lib/schema";
 import { useState } from "react";
 import { signIn } from "@/apis/auth";
 import { ChevronLeft } from "lucide-react";
+import { toast } from "sonner";
 
 export function Loader() {
   const isAuth = getToken();
@@ -44,9 +45,9 @@ export default function Component() {
       const res = await signIn(email, password);
       setToken(res.data.token);
       console.log(res.data.token);
-      navigate("/orgs");
+      navigate("/channels");
     } catch (error) {
-      console.error(error);
+      toast.error("Login no success");
     } finally {
       setIsLoading(false);
     }

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Toaster } from "sonner";
@@ -14,9 +13,6 @@ const queryClient = new QueryClient({
 });
 
 export default function Layout() {
-  useEffect(() => {
-    document.documentElement.classList.add("dark");
-  }, []);
   return (
     <QueryClientProvider client={queryClient}>
       <Toaster richColors position="top-right" />
@@ -25,5 +21,4 @@ export default function Layout() {
       </div>
     </QueryClientProvider>
   );
-}   
-
+}

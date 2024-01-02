@@ -26,14 +26,14 @@ import { getChannels } from "@/apis/channels";
 // import { group } from "console";
 
 export default function Component() {
-  const { channelID } = useParams("/channels/:channelID");
+  const { channelID, orgID } = useParams("/channels/:orgID/:channelID");
   const navigate = useNavigate();
 
   const navigateToGroup = (id: string) => {
-    navigate(`/channels/${channelID}/${id}`);
+    navigate(`/channels/${orgID}/${id}`);
   };
 
-  const { data } = useQuery(["channels"], () => getChannels(channelID));
+  const { data } = useQuery(["channels"], () => getChannels(orgID));
 
   return (
     <div className="w-full flex">
@@ -53,8 +53,8 @@ export default function Component() {
               <p>Browse Channel</p>
             </button>
             <Link
-              to="/channels/:channelID/member_safety"
-              params={{ channelID }}
+              to="/channels/:orgID/member_safety"
+              params={{ orgID }}
               className="w-full p-2 flex gap-1 items-center hover:bg-primary-foreground/20 rounded-sm"
             >
               <Users className="w-4 h-4" />
@@ -63,7 +63,7 @@ export default function Component() {
           </div>
           <div className=" px-2 my-4 text-primary-foreground/60">
             <hr className=" h-2 border-primary-foreground/60"></hr>
-            {Object.entries(groupBy(channels, "category.name"))?.map(
+            {Object.entries(groupBy(data?.data, "category.name"))?.map(
               ([category, channels]) => (
                 <div key={category} className="text-l">
                   <div className="flex justify-between items-center pr-2">

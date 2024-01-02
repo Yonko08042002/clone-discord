@@ -1,16 +1,15 @@
 import { Org } from "@/lib/type";
 import { cn } from "@/lib/utils";
-import { useParams } from "@/router";
+import { useParams, useNavigate } from "@/router";
 import { Plus } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 
 interface OrgSidebarProps {
   orgs: Org[];
 }
 
-export default function OrgSidebar({ orgs }: OrgSidebarProps) {
+export default function OrgSidebar({ orgs = [] }: OrgSidebarProps) {
   const navigate = useNavigate();
-  const { orgID } = useParams("/orgs/:orgID/groups/:groupID");
+  const { orgID } = useParams("/channels/:orgID/:channelID");
   return (
     <div className="p-2 space-y-4 w-20">
       <div className="items-center">
@@ -32,9 +31,12 @@ export default function OrgSidebar({ orgs }: OrgSidebarProps) {
               })}
             ></div>
             <img
-              onClick={() => navigate(`/orgs/${org.id}`)}
+              onClick={() =>
+                navigate(`/channels/:orgID/:channelID`, {
+                  params: { orgID: org.id, channelID: "1" },
+                })
+              }
               src={org.icon}
-              key={org.id}
               alt={org.name}
               className="w-14 h-14 rounded-sm p-1 mt-1 object-cover"
             />

@@ -1,5 +1,9 @@
 import { request } from "@/lib/request";
 
+export const getChannels = async (orgID: string) => {
+  return request.get(`/orgs/${orgID}/channels`);
+};
+
 // interface Channel {
 //   id: string;
 //   name: string;
@@ -14,6 +18,3 @@ import { request } from "@/lib/request";
 //   return request.get(`/orgs/${orgID}/channels/${channelID}/members`);
 // };
 
-export const getChannels = async (orgID: string) => {
-  return request.get(`/orgs/${orgID}/channels`);
-};

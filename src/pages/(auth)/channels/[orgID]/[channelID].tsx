@@ -8,7 +8,7 @@ import MemberList from "./_components/MemberList";
 
 export default function Channel() {
   const [isHideMemberList, setIsHideMemberList] = useState(false);
-  const { channelID } = useParams("/channels/:channelID");
+  const { channelID } = useParams("/channels/:orgID/:channelID");
 
   return (
     <div className="">
