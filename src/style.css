@@ -58,7 +58,7 @@
     @apply bg-background text-foreground;
   }
   *::-webkit-scrollbar {
-    @apply w-2;
+    @apply w-0;
   }
   *::-webkit-scrollbar-track {
     @apply rounded-sm bg-transparent hover:bg-primary-foreground/40;

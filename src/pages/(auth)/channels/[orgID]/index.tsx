@@ -6,10 +6,9 @@ import { useState } from "react";
 import Chatlist from "./_components/ChatList";
 import MemberList from "./_components/MemberList";
 
-
 export default function Group() {
   const [isHideMemberList, setIsHideMemberList] = useState(false);
-  const { channelID } = useParams("/channels/:channelID");
+  const { channelID } = useParams("/channels/:orgID/:channelID");
 
   return (
     <div className="">
