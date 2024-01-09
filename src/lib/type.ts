@@ -26,3 +26,6 @@ export interface Message {
   createdAt: string;
   message: string;
 }
+export interface Images {
+  img: number;
+}

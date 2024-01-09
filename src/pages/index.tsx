@@ -36,11 +36,7 @@ export default function Component() {
       </div>
       <div className=" w-full h-[34rem] text-black bg-white item pt-8">
         <SectionInView className="flex  max-w-5xl gap-10 mx-auto justify-center">
-          <img
-            src={bg_one}
-            alt="bg-group-1"
-            className="object-cover"
-          />
+          <img src={bg_one} alt="bg-group-1" className="object-cover" />
           <div className=" max-w-[300px]">
             <p className="text-4xl font-bold">
               Create an invite-only place where you belong
@@ -63,20 +59,12 @@ export default function Component() {
               having to call.
             </p>
           </div>
-          <img
-            src={bg_two}
-            alt="bg-group-2"
-            className="object-cover"
-          />
+          <img src={bg_two} alt="bg-group-2" className="object-cover" />
         </SectionInView>
       </div>
       <div className="text-black w-full h-[34rem] bg-white">
         <SectionInView className="flex justify-center max-w-5xl gap-10 pt-20 mx-auto">
-          <img
-            src={bg_three}
-            alt="bg-group-3"
-            className="object-cover"
-          />
+          <img src={bg_three} alt="bg-group-3" className="object-cover" />
           <div className=" max-w-[300px]">
             <p className="text-4xl font-bold">From few to a fandom</p>
             <p className="mt-4 leading-8">
@@ -99,11 +87,7 @@ export default function Component() {
               up and have a drawing session with screen share.
             </p>
           </div>
-          <img
-            src={bg_four}
-            alt="bg-call"
-            className="object-cover  mx-auto"
-          />
+          <img src={bg_four} alt="bg-call" className="object-cover  mx-auto" />
           <div className="relative w-full h-max py-2 mt-12">
             <div className="absolute overflow-hidden w-full">
               <img

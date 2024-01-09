@@ -1,8 +1,9 @@
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "./ui/button";
 import { AlignJustify, ChevronRight, Download } from "lucide-react";
-import { Link } from "react-router-dom";
+
 import logo from "@/assets/discord-logo-black.png";
+import { Link } from "@/router";
 export default function NavbarRow() {
   return (
     <Sheet>
@@ -27,7 +28,7 @@ export default function NavbarRow() {
               </Link>
             </div>
             <div className="p-2 rounded-sm">
-              <Link className="hover:underline " to="/">
+              <Link className="hover:underline " to="/download">
                 Download
               </Link>
             </div>
