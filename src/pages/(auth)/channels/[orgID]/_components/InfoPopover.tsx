@@ -8,7 +8,7 @@ interface Props {
 export default function InfoPopover({ member }: Props) {
   return (
     <div className="flex flex-col gap-12 bg-gray-900 rounded-md">
-      <div className="relative bg-blue-900 h-16 rounded-t-md">
+      <div className="relative  bg-blue-900 h-16 rounded-t-md">
         <div className=" absolute top-3 left-3 bg-gray-900 p-2 w-24 h-24 rounded-full">
           <img
             src={member.avatar}

@@ -4,7 +4,7 @@ export default function Component() {
   return (
     <div className="relative w-full h-screen">
       <div className="h-[20rem]">
-        <video width="100%" autoPlay loop muted>
+        <video width="100%" height="100%" autoPlay loop muted>
           <source src={nitroVideo} type="video/webm" />
         </video>
       </div>

@@ -1,4 +1,3 @@
-import TooltipIcon from "@/components/TooltipIcon";
 import { HelpCircle, Users } from "lucide-react";
 import {
   Table,
@@ -8,10 +7,29 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useState } from "react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { useLocation } from "react-router-dom";
+import { Link, useParams } from "@/router";
+
+const MEMBERS = [
+  {
+    id: "001",
+    displayname: "johny",
+    username: "Jone_Terry",
+    avatar:
+      "https://th.bing.com/th/id/OIP.-HoDebcd1MseGnmiTJALDAHaEo?rs=1&pid=ImgDetMain",
+    memberSine: "2023-01-01",
+    joinedDiscord: "2023-01-01",
+    joinMethod: "Discord",
+    roles: ["Admin"],
+  },
+];
 
 export default function Component() {
-  const [isHideMemberList, setIsHideMemberList] = useState(false);
+  const { orgID } = useParams("/channels/:orgID/member_safety");
+  const location = useLocation();
+  // console.log(location);
+
   return (
     <div className="">
       {" "}
@@ -21,39 +39,68 @@ export default function Component() {
           Member
         </div>
         <div className="flex gap-x-2 mx-3">
-          <TooltipIcon
-            icon={
-              <Users
-                onClick={() => setIsHideMemberList(!isHideMemberList)}
-                className="cursor-pointer"
-              />
-            }
-            content={isHideMemberList ? "Show Member List" : "Hide Member List"}
-          ></TooltipIcon>
+          {location.state?.channel && (
+            <Link
+              to="/channels/:orgID/:channelID"
+              params={{ orgID: orgID, channelID: location.state.channel.id }}
+              className="text-xs border border-gray-300 p-2"
+            >
+              Return to {location.state.channel.name}
+            </Link>
+          )}
+
           <HelpCircle className="cursor-pointer" />
         </div>
       </header>
       <div className="p-6">
         <div className="bg-zinc-700 text-white rounded-sm w-full h-full">
-          <div className="p-4">
+          <div className="p-4 border-b border-gray-100">
             <h1>Recent Members</h1>
           </div>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Invoice</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Method</TableHead>
-                <TableHead className="text-right">Amount</TableHead>
+                <TableHead className="space-x-2 ">
+                  {" "}
+                  <Checkbox />
+                  <span>Name</span>
+                </TableHead>
+                <TableHead>Member Since</TableHead>
+                <TableHead>JOINED discord</TableHead>
+                <TableHead>Join Method</TableHead>
+                <TableHead>Roiles</TableHead>
+                <TableHead>SINALS</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              <TableRow>
-                <TableCell className="font-medium">INV001</TableCell>
-                <TableCell>Paid</TableCell>
-                <TableCell>Credit Card</TableCell>
-                <TableCell className="text-right">$250.00</TableCell>
-              </TableRow>
+              {MEMBERS.map((member) => (
+                <TableRow key={member.id}>
+                  <TableCell className="flex gap-2 items-center">
+                    <Checkbox />
+                    <div className="flex gap-2  items-center">
+                      <img
+                        src={member.avatar}
+                        className="aspect-square w-8 h-8 rounded-full object-cover"
+                      />
+                      <div>
+                        <p className="font-bold text-xs">{member.username}</p>
+                        <p className="text-xs text-green-500">
+                          {member.displayname}
+                        </p>
+                      </div>
+                    </div>
+                  </TableCell>
+                  <TableCell>{member.memberSine}</TableCell>
+                  <TableCell>{member.joinedDiscord}</TableCell>
+                  <TableCell>{member.joinMethod}</TableCell>
+                  <TableCell>{member.roles.map((role) => role)}</TableCell>
+                  <TableCell></TableCell>
+                  <TableCell className="flex gap-1">
+                    <button>View</button>
+                    <button>Edit</button>
+                  </TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </div>

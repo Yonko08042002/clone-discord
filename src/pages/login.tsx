@@ -15,7 +15,7 @@ import { toast } from "sonner";
 export function Loader() {
   const isAuth = getToken();
   if (isAuth) {
-    return redirect("/orgs");
+    return redirect("/channels");
   }
   return null;
 }

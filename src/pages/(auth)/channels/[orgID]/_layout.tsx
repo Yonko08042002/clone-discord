@@ -34,6 +34,7 @@ export default function Component() {
   };
 
   const { data } = useQuery(["channels"], () => getChannels(orgID));
+  const channels = data?.data;
 
   return (
     <div className="w-full flex">
@@ -55,6 +56,9 @@ export default function Component() {
             <Link
               to="/channels/:orgID/member_safety"
               params={{ orgID }}
+              state={{
+                channel: channels?.find((channel) => channel.id == channelID),
+              }}
               className="w-full p-2 flex gap-1 items-center hover:bg-primary-foreground/20 rounded-sm"
             >
               <Users className="w-4 h-4" />
@@ -63,7 +67,7 @@ export default function Component() {
           </div>
           <div className=" px-2 my-4 text-primary-foreground/60">
             <hr className=" h-2 border-primary-foreground/60"></hr>
-            {Object.entries(groupBy(data?.data, "category.name"))?.map(
+            {Object.entries(groupBy(channels, "category.name"))?.map(
               ([category, channels]) => (
                 <div key={category} className="text-l">
                   <div className="flex justify-between items-center pr-2">

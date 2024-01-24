@@ -1,13 +1,12 @@
 import { request } from "@/lib/request";
+interface Channel {
+  id: string;
+  name: string;
+}
 
 export const getChannels = async (orgID: string) => {
-  return request.get(`/orgs/${orgID}/channels`);
+  return request.get<Channel[]>(`/orgs/${orgID}/channels`);
 };
-
-// interface Channel {
-//   id: string;
-//   name: string;
-// }
 
 // export const getChannels = async (orgID: string) => {
 //   const res = await request.get<Channel[]>(`/orgs/${orgID}/channels`);
@@ -17,4 +16,3 @@ export const getChannels = async (orgID: string) => {
 // export const getChannelMembers = async (orgID: string, channelID: string) => {
 //   return request.get(`/orgs/${orgID}/channels/${channelID}/members`);
 // };
-
