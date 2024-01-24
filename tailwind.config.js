@@ -17,7 +17,7 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        "discover-bgr": "url('./src/assets/background.png')",
+        "discover-bgr": "url('./public/background.png')",
       },
       colors: {
         border: "hsl(var(--border))",
