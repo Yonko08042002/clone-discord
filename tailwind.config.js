@@ -88,6 +88,16 @@ module.exports = {
             transform: "translateX(0)",
           },
         },
+        "fade-left": {
+          "0%": {
+            opacity: "0",
+            transform: "translateX(4rem)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateX(0)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

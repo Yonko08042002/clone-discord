@@ -1,7 +1,8 @@
 import { Org } from "@/lib/type";
 import { cn } from "@/lib/utils";
 import { useParams, useNavigate } from "@/router";
-import { Plus } from "lucide-react";
+
+import AddOrgModel from "./AddOrgModel";
 
 interface OrgSidebarProps {
   orgs: Org[];
@@ -43,9 +44,7 @@ export default function OrgSidebar({ orgs = [] }: OrgSidebarProps) {
           </div>
         ))}
       </div>
-      <div className=" ml-1 cursor-pointer w-12 h-12 rounded-full bg-gray-600 text-green-500 items-center flex justify-center">
-        <Plus />
-      </div>
+      <AddOrgModel />
     </div>
   );
 }

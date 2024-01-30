@@ -5,7 +5,8 @@ import { Frame, HelpCircle, Users } from "lucide-react";
 import { useState } from "react";
 import Chatlist from "./_components/ChatList";
 import MemberList from "./_components/MemberList";
-
+import PopoverInbox from "./_components/PopverInbox";
+import { cn } from "@/lib/utils";
 export default function Channel() {
   const [isHideMemberList, setIsHideMemberList] = useState(false);
   const { channelID } = useParams("/channels/:orgID/:channelID");
@@ -22,12 +23,20 @@ export default function Channel() {
             icon={
               <Users
                 onClick={() => setIsHideMemberList(!isHideMemberList)}
-                className="cursor-pointer"
+                className={cn("cursor-pointer text-gray-300 hover:text-white", {
+                  "text-white": !isHideMemberList,
+                })}
               />
             }
             content={isHideMemberList ? "Show Member List" : "Hide Member List"}
           ></TooltipIcon>
-          <HelpCircle className="cursor-pointer" />
+          <PopoverInbox />
+          <TooltipIcon
+            icon={
+              <HelpCircle className="cursor-pointer text-gray-300 hover:text-white" />
+            }
+            content={"suport"}
+          />
         </div>
       </header>
       <div className="flex  h-[calc(100vh-3.5rem)] ">

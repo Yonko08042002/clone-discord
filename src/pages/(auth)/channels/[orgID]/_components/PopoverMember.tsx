@@ -5,7 +5,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-import InfoPopover from "./InfoPopover";
+import InfoPopover from "./InfoMember";
 import { User } from "@/lib/type";
 
 interface Props {
